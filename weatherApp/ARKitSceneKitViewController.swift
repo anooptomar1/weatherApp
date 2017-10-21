@@ -51,17 +51,18 @@ class ARKitSceneKitViewController: UIViewController {
         let hitTestResults = arscnView.hitTest(tapLocation)
         // safely unwrap the first node from our hitTestResults. If the result does contain at least a node, we will remove the first node we tapped on from its parent node.
         guard let node = hitTestResults.first?.node else {
-            let translation = hitTestResults.first?.worldTransform.translation
-//            addBox(x: translation.x, y: translation.y, z: translation.z)
+            //we are not hiting any node, so let's create a new node
+            guard let currentFrame = arscnView.session.currentFrame else { return }
+            var translation = matrix_identity_float4x4
+            translation.columns.3.z = -0.1
+            print(scnScene.rootNode.childNodes.count)
+            let sun = Sun()
+            sun.sphere.simdTransform = matrix_multiply(currentFrame.camera.transform, translation)
+            scnScene.rootNode.addChildNode(sun.sphere)
             return
+            
         }
         node.removeFromParentNode()
     }
-}
 
-extension float4x4 {
-    var translation: float3 {
-        let translation = self.columns.3
-        return float3(translation.x, translation.y, translation.z)
-    }
 }
