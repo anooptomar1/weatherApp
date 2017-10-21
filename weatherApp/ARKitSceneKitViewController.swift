@@ -14,11 +14,13 @@ class ARKitSceneKitViewController: UIViewController {
     @IBOutlet weak var arscnView: ARSCNView!
     var scnScene: SCNScene!
     
+    var translation = matrix_identity_float4x4
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sun = Sun()
+        translation.columns.3.z = -0.1
         initSecne()
-        scnScene.rootNode.addChildNode(sun.sphere)
+        addSunNode()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +46,17 @@ class ARKitSceneKitViewController: UIViewController {
         arscnView.scene = scnScene
     }
     
+    func addSunNode() {
+//        guard let currentFrame = arscnView.session.currentFrame else { return }
+        let sun = Sun()
+        if let currentFrame = arscnView.session.currentFrame {
+            sun.sunNode.simdTransform = matrix_multiply(currentFrame.camera.transform, translation)
+        } else {
+            sun.sunNode.simdTransform = matrix_multiply(matrix_identity_float4x4, translation)
+        }
+        scnScene.rootNode.addChildNode(sun.sunNode)
+    }
+    
     @IBAction func tappedInARSCNView(_ sender: UITapGestureRecognizer) {
         //retrieve the user’s tap location relative to the sceneView
         let tapLocation = sender.location(in: arscnView)
@@ -52,13 +65,7 @@ class ARKitSceneKitViewController: UIViewController {
         // safely unwrap the first node from our hitTestResults. If the result does contain at least a node, we will remove the first node we tapped on from its parent node.
         guard let node = hitTestResults.first?.node else {
             //we are not hiting any node, so let's create a new node
-            guard let currentFrame = arscnView.session.currentFrame else { return }
-            var translation = matrix_identity_float4x4
-            translation.columns.3.z = -0.1
-            print(scnScene.rootNode.childNodes.count)
-            let sun = Sun()
-            sun.sphere.simdTransform = matrix_multiply(currentFrame.camera.transform, translation)
-            scnScene.rootNode.addChildNode(sun.sphere)
+            addSunNode()
             return
             
         }
