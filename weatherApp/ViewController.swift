@@ -9,34 +9,46 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var menuView: UIView!
-    var menuShow: Bool = false
-    var currentWeather: Weather?
     @IBOutlet weak var weatherCoditionImageView: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var menuViewHeightConstrant: NSLayoutConstraint!
     
     var locationManager: CLLocationManager = CLLocationManager()
     let pin = MKPointAnnotation()
+    var menuShow: Bool = false
+    var currentWeather: Weather?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
         mapView.showsUserLocation = true
-        locationManager.startUpdatingLocation()
         mapView.delegate = self
         menuView.layer.cornerRadius = 10
         menuViewHeightConstrant.constant = 0
+        locationManager.requestLocation()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let coordinate = locations.first?.coordinate else { return }
+        APIService.parseLatAndLongToFetchWeather(lat: CGFloat(coordinate.latitude), long: CGFloat(coordinate.longitude)) { [weak self](weather) in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                strongSelf.currentWeather = weather
+                strongSelf.showMenu()
+            }
+        }
     }
-
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Failed to find user's location: \(error.localizedDescription)")
+    }
+    
     @IBAction func segmentControlTapped(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             mapView.mapType = .standard
@@ -54,7 +66,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // convert touch point to coordinate
         let coordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
         //create a pin
-//        let pin = MKPointAnnotation()
+        //let pin = MKPointAnnotation()  //we don't want more than one pin on the map, so we set it as a global var instead of a local var
         //set where to display the pin
         pin.coordinate = coordinate
         //add the pin to the map
@@ -69,7 +81,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    @IBOutlet weak var menuViewHeightConstrant: NSLayoutConstraint!
+
     // call when pin is selected to show the menu, this function is part of the delegate
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
@@ -80,7 +92,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             return
         }
         if !self.menuShow {
-            menuViewHeightConstrant.constant = 200
+            menuViewHeightConstrant.constant = 150
             UIView.animate(withDuration: 1) {
                 self.menuView.alpha = 1
                 self.view.layoutIfNeeded()
@@ -106,6 +118,13 @@ class ViewController: UIViewController, MKMapViewDelegate {
 //            
 //        }
         self.menuShow = false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let arViewController = segue.destination as! ARKitSceneKitViewController
+        if let weather = currentWeather {
+            arViewController.weather = weather
+        }
     }
 }
 

@@ -36,7 +36,7 @@
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aIY-Gs-mdX">
-                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="517" width="375" height="150"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5oL-If-7Jk">
                                         <rect key="frame" x="8" y="8" width="50" height="50"/>
@@ -45,14 +45,25 @@
                                             <constraint firstAttribute="width" constant="50" id="sqI-k5-bU6"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oh4-oy-LVc">
+                                        <rect key="frame" x="155" y="75" width="65" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="AeQ-TP-GGh"/>
+                                            <constraint firstAttribute="width" constant="65" id="Git-I6-4gK"/>
+                                        </constraints>
+                                        <state key="normal" title="AR"/>
+                                        <connections>
+                                            <segue destination="lCQ-GO-aAw" kind="show" identifier="openARView" id="vvf-kw-dmj"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2p-y3-nzP">
-                                        <rect key="frame" x="8" y="66" width="359" height="21"/>
+                                        <rect key="frame" x="66" y="8" width="301" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMh-XZ-N6f">
-                                        <rect key="frame" x="8" y="95" width="359" height="21"/>
+                                        <rect key="frame" x="66" y="37" width="301" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -62,14 +73,16 @@
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="5oL-If-7Jk" firstAttribute="top" secondItem="aIY-Gs-mdX" secondAttribute="top" constant="8" id="5Xo-dH-xaO"/>
-                                    <constraint firstAttribute="height" constant="200" id="8CU-HN-d8Q"/>
+                                    <constraint firstAttribute="height" constant="150" id="8CU-HN-d8Q"/>
                                     <constraint firstItem="5oL-If-7Jk" firstAttribute="leading" secondItem="aIY-Gs-mdX" secondAttribute="leading" constant="8" id="8uz-S0-Cau"/>
-                                    <constraint firstItem="m2p-y3-nzP" firstAttribute="leading" secondItem="aIY-Gs-mdX" secondAttribute="leading" constant="8" id="8v2-K0-XGG"/>
-                                    <constraint firstAttribute="trailing" secondItem="m2p-y3-nzP" secondAttribute="trailing" constant="8" id="Jkp-um-16G"/>
-                                    <constraint firstAttribute="trailing" secondItem="bMh-XZ-N6f" secondAttribute="trailing" constant="8" id="SZ2-VC-sSc"/>
-                                    <constraint firstItem="bMh-XZ-N6f" firstAttribute="top" secondItem="m2p-y3-nzP" secondAttribute="bottom" constant="8" id="Tsv-Nv-K29"/>
-                                    <constraint firstItem="bMh-XZ-N6f" firstAttribute="leading" secondItem="aIY-Gs-mdX" secondAttribute="leading" constant="8" id="YzA-Iv-IUE"/>
-                                    <constraint firstItem="m2p-y3-nzP" firstAttribute="top" secondItem="5oL-If-7Jk" secondAttribute="bottom" constant="8" id="g9J-Mj-YIM"/>
+                                    <constraint firstAttribute="trailing" secondItem="m2p-y3-nzP" secondAttribute="trailing" constant="8" id="CxH-Qc-Xzg"/>
+                                    <constraint firstItem="m2p-y3-nzP" firstAttribute="top" secondItem="aIY-Gs-mdX" secondAttribute="top" constant="8" id="Q8A-t2-lZf"/>
+                                    <constraint firstItem="oh4-oy-LVc" firstAttribute="centerX" secondItem="aIY-Gs-mdX" secondAttribute="centerX" id="TFw-eR-OP8"/>
+                                    <constraint firstItem="oh4-oy-LVc" firstAttribute="top" secondItem="bMh-XZ-N6f" secondAttribute="bottom" constant="17" id="bIM-b6-nvd"/>
+                                    <constraint firstItem="bMh-XZ-N6f" firstAttribute="top" secondItem="m2p-y3-nzP" secondAttribute="bottom" constant="8" id="eR0-cn-b4C"/>
+                                    <constraint firstItem="m2p-y3-nzP" firstAttribute="leading" secondItem="5oL-If-7Jk" secondAttribute="trailing" constant="8" id="loJ-k1-v04"/>
+                                    <constraint firstAttribute="trailing" secondItem="bMh-XZ-N6f" secondAttribute="trailing" constant="8" id="nnI-6c-3ep"/>
+                                    <constraint firstItem="bMh-XZ-N6f" firstAttribute="leading" secondItem="5oL-If-7Jk" secondAttribute="trailing" constant="8" id="uYA-Qq-s7D"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="ocS-yb-9vh" appends="YES" id="IU7-en-BhO"/>
@@ -91,6 +104,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="xqW-Rr-cg6"/>
                     <connections>
                         <outlet property="cityNameLabel" destination="m2p-y3-nzP" id="sHl-xd-jfG"/>
                         <outlet property="mapView" destination="GCD-B2-Bck" id="Idu-Gm-lBJ"/>
@@ -112,7 +126,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-134" y="116"/>
+            <point key="canvasLocation" x="485.60000000000002" y="115.59220389805098"/>
         </scene>
         <!--Kit Scene Kit View Controller-->
         <scene sceneID="kVE-4P-yrj">
@@ -129,10 +143,23 @@
                                     <outletCollection property="gestureRecognizers" destination="rxt-Fl-d8S" appends="YES" id="S4a-6j-bla"/>
                                 </connections>
                             </arscnView>
+                            <segmentedControl opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Kud-Bl-RJh">
+                                <rect key="frame" x="83" y="618" width="209" height="29"/>
+                                <segments>
+                                    <segment title="Sun"/>
+                                    <segment title="Cloud"/>
+                                    <segment title="Raindrop"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentControlTapped:" destination="lCQ-GO-aAw" eventType="valueChanged" id="Egb-yy-43b"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="C5s-Pk-jfW" firstAttribute="top" secondItem="NDW-bL-xqG" secondAttribute="top" id="2XS-M5-4E0"/>
+                            <constraint firstItem="ZsB-Ov-EcI" firstAttribute="bottom" secondItem="Kud-Bl-RJh" secondAttribute="bottom" constant="21" id="2aK-rW-IwX"/>
+                            <constraint firstItem="Kud-Bl-RJh" firstAttribute="centerX" secondItem="NDW-bL-xqG" secondAttribute="centerX" id="M0P-dK-akc"/>
                             <constraint firstItem="C5s-Pk-jfW" firstAttribute="leading" secondItem="NDW-bL-xqG" secondAttribute="leading" id="VTH-zf-HBX"/>
                             <constraint firstItem="C5s-Pk-jfW" firstAttribute="bottom" secondItem="ZsB-Ov-EcI" secondAttribute="bottom" id="lZK-WG-3Uu"/>
                             <constraint firstAttribute="trailing" secondItem="C5s-Pk-jfW" secondAttribute="trailing" id="tNZ-8F-cGE"/>
@@ -150,7 +177,25 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1002" y="116"/>
+            <point key="canvasLocation" x="1272.8" y="115.59220389805098"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2r2-T1-DFu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X7E-UA-Pst" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lrF-AO-5pT">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="2Xc-W8-x2t"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fw3-dW-Mnw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-278" y="116"/>
         </scene>
     </scenes>
 </document>

@@ -9,10 +9,11 @@
 import Foundation
 import ARKit
 
-class Sun {
-    let sunNode: SCNNode
+class Sun: Node {
     
-    init(x: Float = 0, y: Float = 0, z: Float = 0) {
+    var node: SCNNode
+    
+    init() {
         let radiusOfSphere: Float = 0.01
         let numberOfPyramid:Int = 8
         var pyramidNodeArray: [SCNNode] = [SCNNode]()
@@ -57,7 +58,7 @@ class Sun {
         
         pyramidNodeArray[7].position = SCNVector3(x:centralOfSphereX + sin45 * (radiusOfSphere + pyramidLength/2.0), y:centralOfSphereY + cos45 * (radiusOfSphere + pyramidLength/2.0), z:centralOfSphereZ)
         
-        self.sunNode = sphereNode.flattenedClone()
+       self.node = sphereNode.flattenedClone()
         
     }
     
