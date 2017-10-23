@@ -16,7 +16,7 @@ class Cloud: Node {
     init() {
         let cloudColor = hexStringToUIColor(hex: "#F3F3F2")
         
-        let radiusOfSphereMiddle: Float = 0.01
+        let radiusOfSphereMiddle: Float = 0.03
         let sphereMiddleGeometry = SCNSphere(radius: CGFloat(radiusOfSphereMiddle))
         sphereMiddleGeometry.materials.first?.diffuse.contents = cloudColor
         let sphereMiddleNode = SCNNode(geometry: sphereMiddleGeometry)

@@ -14,13 +14,13 @@ class Sun: Node {
     var node: SCNNode
     
     init() {
-        let radiusOfSphere: Float = 0.01
+        let radiusOfSphere: Float = 0.06
         let numberOfPyramid:Int = 8
         var pyramidNodeArray: [SCNNode] = [SCNNode]()
         let sunColor = hexStringToUIColor(hex: "#FCD440")
-        let pyramidWidth: Float = 0.003
-        let pyramidHeight: Float = 0.003
-        let pyramidLength: Float = 0.003
+        let pyramidWidth: Float = radiusOfSphere / 3
+        let pyramidHeight: Float = radiusOfSphere / 3
+        let pyramidLength: Float = radiusOfSphere / 3
         
         let sphereGeometry = SCNSphere(radius: CGFloat(radiusOfSphere))
         sphereGeometry.materials.first?.diffuse.contents = sunColor

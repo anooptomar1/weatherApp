@@ -21,7 +21,6 @@
 		B3C93E1D1F87171700ABDBFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C93E1B1F87171700ABDBFD /* LaunchScreen.storyboard */; };
 		B3D0ED041F9C163900DD5887 /* Raindrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D0ED031F9C163900DD5887 /* Raindrop.swift */; };
 		B3D0ED061F9C623300DD5887 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D0ED051F9C623300DD5887 /* Text.swift */; };
-		B3D0ED091F9D5D5800DD5887 /* NodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D0ED081F9D5D5800DD5887 /* NodeGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +40,6 @@
 		B3C93E1E1F87171700ABDBFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3D0ED031F9C163900DD5887 /* Raindrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Raindrop.swift; sourceTree = "<group>"; };
 		B3D0ED051F9C623300DD5887 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
-		B3D0ED081F9D5D5800DD5887 /* NodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +84,6 @@
 		B3C93E111F87171700ABDBFD /* weatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				B3D0ED071F9D5D3B00DD5887 /* Utilities */,
 				B33A37671F9AB46900A14E2B /* 3DObjects */,
 				B3C93E121F87171700ABDBFD /* AppDelegate.swift */,
 				B3C93E141F87171700ABDBFD /* ViewController.swift */,
@@ -100,14 +97,6 @@
 				B33A37651F9AB3FD00A14E2B /* HexStringToUIColor.swift */,
 			);
 			path = weatherApp;
-			sourceTree = "<group>";
-		};
-		B3D0ED071F9D5D3B00DD5887 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				B3D0ED081F9D5D5800DD5887 /* NodeGenerator.swift */,
-			);
-			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,7 +182,6 @@
 				B3C93E131F87171700ABDBFD /* AppDelegate.swift in Sources */,
 				B3D0ED061F9C623300DD5887 /* Text.swift in Sources */,
 				B33A37641F9A9B8D00A14E2B /* ARKitSceneKitViewController.swift in Sources */,
-				B3D0ED091F9D5D5800DD5887 /* NodeGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
