@@ -68,12 +68,12 @@ class ARKitSceneKitViewController: UIViewController, ARSCNViewDelegate {
     func addNode() {
         if !textShowed {
             guard foundSurface else { return }
-//            guard let weatherObj = weather else { return }
-//            let temperature = (weatherObj.temperature ?? 273.15) - 273.15
+            guard let weatherObj = weather else { return }
+            let temperature = (weatherObj.temperature ?? 273.15) - 273.15
             //standard string formatting, %.nf where n is the number of decimal places you require
-//            let textToShow = (weatherObj.cityName ?? "") + " " + (String(format: "%.1f", temperature)) + "°C"
-//            obj3D = Text(text: textToShow)
-            obj3D = Text(text: "Burnaby")
+            let textToShow = (weatherObj.cityName ?? "") + " " + (String(format: "%.1f", temperature)) + "°C"
+            obj3D = Text(text: textToShow)
+//            obj3D = Text(text: "Burnaby")
             obj3D.node.position = anchorPosition
             scnScene.rootNode.addChildNode(obj3D.node)
             trackerNode.removeFromParentNode()
